@@ -1,0 +1,4 @@
+ControlMaster auto
+ControlPath   /home/ching/.ssh/tmp/%h_%p_%r 
+
+ServerAliveInterval 120

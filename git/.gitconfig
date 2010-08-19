@@ -1,0 +1,8 @@
+[user]
+	name = Christopher Ching
+	email = coolchingster@gmail.com
+[color]
+	status = auto
+	branch = auto
+	interactive = auto
+	ui = true
