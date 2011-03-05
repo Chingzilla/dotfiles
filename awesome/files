@@ -1,2 +1,2 @@
-rc.lua>.config/rc.lua
-themes>.config/themes
+rc.lua>.config/awesome/rc.lua
+themes>.config/awesome/themes
