@@ -1,0 +1,7 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/home/ching/documents/Dropbox/job search/general'
+let g:netrw_dirhist_2='/home/ching/.config/awesome/themes/ching/titlebar'
+let g:netrw_dirhist_3='/home/ching/Downloads/lazerprinter/usr/local/Brother/Printer/HL2270DW/inf'
+let g:netrw_dirhist_4='/home/ching/work/dotman/src/lib'
+let g:netrw_dirhist_5='/home/ching/work/dotfiles/ssh'

@@ -7,8 +7,21 @@ set nocp
 set ruler
 
 set mouse=a
-set ttymouse=xterm2
 
-autocmd Syntax python set tabstop=4 expandtab shiftwidth=4 shiftround showmatch smarttab softtabstop=4
-autocmd Syntax py set tabstop=4 expandtab shiftwidth=4 shiftround showmatch smarttab softtabstop=4
+set tabstop=4
+set expandtab
+set shiftwidth=4
+set shiftround
+set showmatch
+set smarttab
+set softtabstop=4
 
+colorscheme desert256 
+
+"autocmd Syntax python set tabstop=4 expandtab shiftwidth=4 shiftround showmatch smarttab softtabstop=4
+"autocmd Syntax py set tabstop=4 expandtab shiftwidth=4 shiftround showmatch smarttab softtabstop=4
+
+
+"Setup eclim"
+set nocompatible
+filetype plugin on
