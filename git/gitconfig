@@ -1,0 +1,17 @@
+[user]
+	name = Chris Ching
+	email = chris.e.ching@gmail.com
+
+[core]
+    pager = less -FRSX
+    editor = vim
+	excludesfile = /home/ching/.gitignore
+
+[color]
+    ui = auto
+	status = auto
+	branch = auto
+	interactive = auto
+
+[merge]
+    tool = vimdiff
