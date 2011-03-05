@@ -9,27 +9,33 @@ require("beautiful")
 -- Notification library
 require("naughty")
 
+-- Add Widigt libaray
+require("vicious")
+
+
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
- beautiful.init("/home/ching/.config/awesome/themes/default/theme.lua")
+beautiful.init("/home/ching/.config/awesome/themes/ching/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt"
 editor = os.getenv("EDITOR") or "vim"
-editor_cmd = terminal .. " " .. editor
+editor_cmd = terminal .. " -e " .. editor
 
--- modkey = win-key
+-- Default modkey.
+-- Usually, Mod4 is the key with a logo between Control and Alt.
+-- If you do not like this or do not have such a key,
+-- I suggest you to remap Mod4 to another key using xmodmap or other tools.
+-- However, you can use another modifier like Mod1, but it may interact with others.
 modkey = "Mod4"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 layouts =
 {
     awful.layout.suit.tile,
-    awful.layout.suit.max,
---  awful.layout.suit.floating,
---  awful.layout.suit.tile.left,
---  awful.layout.suit.max.fullscreen,
---  awful.layout.suit.magnifier
+    awful.layout.suit.tile.top,
+    awful.layout.suit.max.fullscreen,
+    awful.layout.suit.floating,
 }
 -- }}}
 
@@ -38,7 +44,7 @@ layouts =
 tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    tags[s] = awful.tag({ 'www', 'dev', 'dev2', 'im', 5, 6, 7 }, s, layouts[1])
+    tags[s] = awful.tag({ 'www', 'dev1', 'dev2', 'im', ' 5', ' 6', ' 7', ' 8', ' 9' }, s, layouts[1])
 end
 -- }}}
 
@@ -51,24 +57,26 @@ myawesomemenu = {
    { "quit", awesome.quit }
 }
 
-myinternetmenu = {
-   { "Chrome", "chromium" },
-   { "Pidgin", "pidgen" },
+appmenu = {
+   { "Chromium", "chromium" },
+   { "Pidgin", "pidgin"},
+   { "Arduino", "arduino"},
+   { "File Manager", "Thundar"}
 }
 
-mykeyboard = {
-    { "Dvorak", "setxkbmap dvorak" },
-    { "QWERTY", "setxkbmap us" }
+keyboardmenu = {
+   { "QWERTY", "setxkbmap us" },
+   { "Dvorak", "setxkbmap dvorak" }
 }
 
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
-                                    { "keyboard", mykeyboard },
-				    { "internet", myinternetmenu },
-				    { "open terminal", terminal }
+                                    { "applications", appmenu},
+                                    { "keyboards", keyboardmenu},
+                                    { "open terminal", terminal }
                                   }
                         })
 
-mylauncher = awful.widget.launcher({ image = image(beautiful.awesome_icon),
+mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                                      menu = mymainmenu })
 -- }}}
 
@@ -115,6 +123,16 @@ mytasklist.buttons = awful.util.table.join(
                                               if client.focus then client.focus:raise() end
                                           end))
 
+-- Create Battery Widget
+batwidget = awful.widget.progressbar()
+batwidget:set_width(8)
+batwidget:set_height(10)
+batwidget:set_vertical(true)
+batwidget:set_background_color("#000000")
+batwidget:set_color("#FFFFFF")
+batwidget:set_ticks(true)
+vicious.register(batwidget, vicious.widgets.bat, "$2", 61, "BAT0")
+
 for s = 1, screen.count() do
     -- Create a promptbox for each screen
     mypromptbox[s] = awful.widget.prompt()
@@ -145,6 +163,7 @@ for s = 1, screen.count() do
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
     right_layout:add(mytextclock)
+    right_layout:add(batwidget)
     right_layout:add(mylayoutbox[s])
 
     -- Now bring it all together (with the tasklist in the middle)
@@ -200,7 +219,7 @@ globalkeys = awful.util.table.join(
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
-    --awful.key({ modkey, "Shift"   }, "q", awesome.quit),
+    awful.key({ modkey, "Shift"   }, "q", awesome.quit),
 
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)    end),
     awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)    end),
@@ -211,14 +230,22 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "space", function () awful.layout.inc(layouts,  1) end),
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(layouts, -1) end),
 
+    -- Volume controal
+    -- awful.key({ }, "XF86AudioMute", function () awful.util.spawn("amixer set Master toggle") end ),
+    -- awful.key({ }, "XF86AudioLowerVolume", function () awful.util.spawn("amixer set Master 5%-") end ),
+    -- awful.key({ }, "XF86AudioRaiseVolume", function () awful.util.spawn("amixer set Master 5%+") end ),
+
     -- Prompt
-    awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),
-    -- Dmenu
-    awful.key({ modkey },            "p",     function () awful.util.spawn("dmenu_run") end),
-    -- Volume
-    awful.key({}, "#121", function () os.execute("amixer set Master toggle") end),
-    awful.key({}, "#122", function () os.execute("amixer set Master 2-") end),
-    awful.key({}, "#123", function () os.execute("amixer set Master 2+") end),
+    -- awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),
+    awful.key({ modkey }, "r", function()
+                               awful.util.spawn("dmenu_run -nb \"#000000\" -nf \"#ffffff\" -sb \"#f2712f\" -sf \"#000000\"")
+                               end),
+    awful.key({ "Mod1" }, "F2", function()
+                               awful.util.spawn("dmenu_run -nb \"#000000\" -nf \"#ffffff\" -sb \"#f2712f\" -sf \"#000000\"")
+                               end),
+
+    -- Launch Chrome
+    awful.key({ modkey }, "i", function() awful.util.spawn("chromium") end ),
 
     awful.key({ modkey }, "x",
               function ()
@@ -232,10 +259,10 @@ globalkeys = awful.util.table.join(
 clientkeys = awful.util.table.join(
     awful.key({ modkey,           }, "f",      function (c) c.fullscreen = not c.fullscreen  end),
     awful.key({ modkey, "Shift"   }, "c",      function (c) c:kill()                         end),
+    awful.key({ "Mod1",           }, "F4",  function (c) c:kill()                          end),
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ),
     awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end),
     awful.key({ modkey,           }, "o",      awful.client.movetoscreen                        ),
-    awful.key({ modkey, "Shift"   }, "r",      function (c) c:redraw()                       end),
     awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end),
     awful.key({ modkey,           }, "n",      function (c) c.minimized = not c.minimized    end),
     awful.key({ modkey,           }, "m",
@@ -302,24 +329,20 @@ awful.rules.rules = {
                      focus = true,
                      keys = clientkeys,
                      buttons = clientbuttons } },
-    { rule = { class = "MPlayer" },
-      properties = { floating = true } },
     { rule = { class = "pinentry" },
       properties = { floating = true } },
     { rule = { class = "gimp" },
       properties = { floating = true } },
-    -- Set Firefox to always map on tags number 2 of screen 1.
-    -- { rule = { class = "Firefox" },
-    --   properties = { tag = tags[1][2] } },
+    { rule = { class = "feh" },
+      properties = { floating = true } },
+    { rule = { class = "Pidgin" },
+      properties = { tag = tags [1][4]} },
 }
 -- }}}
 
 -- {{{ Signals
 -- Signal function to execute when a new client appears.
 client.connect_signal("manage", function (c, startup)
-    -- Add a titlebar
-    -- awful.titlebar.add(c, { modkey = modkey })
-
     -- Enable sloppy focus
     c:connect_signal("mouse::enter", function(c)
         if awful.layout.get(c.screen) ~= awful.layout.suit.magnifier
