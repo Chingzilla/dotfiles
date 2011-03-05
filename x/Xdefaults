@@ -1,1 +1,20 @@
-work/configs/Xdefaults/Xdefaults
+URxvt.buffered:         true
+URxvt.background:       black
+URxvt.foreground:       white
+#URxvt.cursorColor:      green
+#URxvt.underlineColor:   yellow
+URxvt.font:             xft:Terminus:pixelsize=10:antialias=false
+URxvt.boldFont:         xft:Terminus:bold:pixelsize=10:antialias=false
+
+URxvt.scrollBar: false
+
+#URxvt.transparent: true
+#URxvt.shading: 10 
+
+Urxvt.secondaryScroll:  true    # Enable Shift-PageUp/Down in screen
+
+Xft.dpi:        120
+Xft.antialias:  true
+Xft.rgba:       rgb
+Xft.hinting:    true
+Xft.hintstyle:  hintslight
