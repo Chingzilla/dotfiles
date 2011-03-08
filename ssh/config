@@ -1,1 +1,3 @@
-/home/ching/work/configs/ssh/config
+Host home
+   HostName subetha.dyndns.org
+   Port 4224
