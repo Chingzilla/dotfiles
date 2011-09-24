@@ -30,7 +30,7 @@ case "$CMD" in
     ;;
 
     *)
-        echo "usage: $0 {link, backup}"
+        echo "usage: $0 PROGRAM {link, backup}"
     ;;
 
 esac
