@@ -5,6 +5,8 @@ URxvt.foreground:       white
 #URxvt.underlineColor:   yellow
 URxvt.font:             xft:Terminus:pixelsize=10:antialias=false
 URxvt.boldFont:         xft:Terminus:bold:pixelsize=10:antialias=false
+URxvt.depth: 32
+URxvt.background: rgba:1111/1111/1111/dddd
 
 URxvt.scrollBar: false
 
@@ -13,8 +15,8 @@ URxvt.scrollBar: false
 
 Urxvt.secondaryScroll:  true    # Enable Shift-PageUp/Down in screen
 
-Xft.dpi:        120
-Xft.antialias:  true
-Xft.rgba:       rgb
-Xft.hinting:    true
-Xft.hintstyle:  hintslight
+#Xft.dpi:        120
+#Xft.antialias:  true
+#Xft.rgba:       rgb
+#Xft.hinting:    true
+#Xft.hintstyle:  hintslight
