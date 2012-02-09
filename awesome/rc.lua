@@ -9,9 +9,6 @@ require("beautiful")
 -- Notification library
 require("naughty")
 
--- Add Widigt libaray
-require("vicious")
-
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
@@ -106,6 +103,7 @@ mytasklist.buttons = awful.util.table.join(
                                               client.focus = c
                                               c:raise()
                                           end),
+                     awful.button({ }, 2, function(c) c:kill() end),
                      awful.button({ }, 3, function ()
                                               if instance then
                                                   instance:hide()
