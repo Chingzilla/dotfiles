@@ -16,7 +16,7 @@ set showmatch
 set smarttab
 set softtabstop=4
 
-colorscheme desert256 
+colorscheme molokai 
 
 "autocmd Syntax python set tabstop=4 expandtab shiftwidth=4 shiftround showmatch smarttab softtabstop=4
 "autocmd Syntax py set tabstop=4 expandtab shiftwidth=4 shiftround showmatch smarttab softtabstop=4
@@ -25,3 +25,13 @@ colorscheme desert256
 "Setup eclim"
 set nocompatible
 filetype plugin on
+
+"<f7> for spell check
+nn <f7> :setlocal spell! spelllang=en_us<CR>
+
+"<f1> and <f2> for traversing buffers
+nnoremap <f1> :bp<CR>
+nnoremap <f2> :bn<CR>
+
+"<F5> to toggle paste mode (great for python copy-paste)
+nnoremap <f5> :set paste!<CR>
