@@ -210,22 +210,40 @@
   </keybind>
 
   <keybind key="W-S-1">
-    <action name="SendToDesktop"><to>1</to></action>
+    <action name="SendToDesktop">
+        <to>1</to>
+        <follow>no</follow>
+    </action>
   </keybind>
   <keybind key="W-S-2">
-    <action name="SendToDesktop"><to>2</to></action>
+    <action name="SendToDesktop">
+        <to>2</to>
+        <follow>no</follow>
+    </action>
   </keybind>
   <keybind key="W-S-3">
-    <action name="SendToDesktop"><to>3</to></action>
+    <action name="SendToDesktop">
+        <to>3</to>
+        <follow>no</follow>
+    </action>
   </keybind>
   <keybind key="W-S-4">
-    <action name="SendToDesktop"><to>4</to></action>
+    <action name="SendToDesktop">
+        <to>4</to>
+        <follow>no</follow>
+    </action>
   </keybind>
   <keybind key="W-S-5">
-    <action name="SendToDesktop"><to>5</to></action>
+    <action name="SendToDesktop">
+        <to>5</to>
+        <follow>no</follow>
+    </action>
   </keybind>
   <keybind key="W-S-6">
-    <action name="SendToDesktop"><to>6</to></action>
+    <action name="SendToDesktop">
+        <to>6</to>
+        <follow>no</follow>
+    </action>
   </keybind>
 
   <keybind key="W-d">
