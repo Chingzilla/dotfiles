@@ -190,42 +190,44 @@
   <chainQuitKey>C-g</chainQuitKey>
 
   <!-- Keybindings for desktop switching -->
-  <keybind key="C-A-Left">
-    <action name="GoToDesktop"><to>left</to><wrap>no</wrap></action>
-  </keybind>
-  <keybind key="C-A-Right">
-    <action name="GoToDesktop"><to>right</to><wrap>no</wrap></action>
-  </keybind>
-  <keybind key="C-A-Up">
-    <action name="GoToDesktop"><to>up</to><wrap>no</wrap></action>
-  </keybind>
-  <keybind key="C-A-Down">
-    <action name="GoToDesktop"><to>down</to><wrap>no</wrap></action>
-  </keybind>
-  <keybind key="S-A-Left">
-    <action name="SendToDesktop"><to>left</to><wrap>no</wrap></action>
-  </keybind>
-  <keybind key="S-A-Right">
-    <action name="SendToDesktop"><to>right</to><wrap>no</wrap></action>
-  </keybind>
-  <keybind key="S-A-Up">
-    <action name="SendToDesktop"><to>up</to><wrap>no</wrap></action>
-  </keybind>
-  <keybind key="S-A-Down">
-    <action name="SendToDesktop"><to>down</to><wrap>no</wrap></action>
-  </keybind>
-  <keybind key="W-F1">
+  <keybind key="W-1">
     <action name="GoToDesktop"><to>1</to></action>
   </keybind>
-  <keybind key="W-F2">
+  <keybind key="W-2">
     <action name="GoToDesktop"><to>2</to></action>
   </keybind>
-  <keybind key="W-F3">
+  <keybind key="W-3">
     <action name="GoToDesktop"><to>3</to></action>
   </keybind>
-  <keybind key="W-F4">
+  <keybind key="W-4">
     <action name="GoToDesktop"><to>4</to></action>
   </keybind>
+  <keybind key="W-5">
+    <action name="GoToDesktop"><to>5</to></action>
+  </keybind>
+  <keybind key="W-6">
+    <action name="GoToDesktop"><to>6</to></action>
+  </keybind>
+
+  <keybind key="W-S-1">
+    <action name="SendToDesktop"><to>1</to></action>
+  </keybind>
+  <keybind key="W-S-2">
+    <action name="SendToDesktop"><to>2</to></action>
+  </keybind>
+  <keybind key="W-S-3">
+    <action name="SendToDesktop"><to>3</to></action>
+  </keybind>
+  <keybind key="W-S-4">
+    <action name="SendToDesktop"><to>4</to></action>
+  </keybind>
+  <keybind key="W-S-5">
+    <action name="SendToDesktop"><to>5</to></action>
+  </keybind>
+  <keybind key="W-S-6">
+    <action name="SendToDesktop"><to>6</to></action>
+  </keybind>
+
   <keybind key="W-d">
     <action name="ToggleShowDesktop"/>
   </keybind>
@@ -306,7 +308,7 @@
     </action>
   </keybind>
   
-  <keybind key="W-space">
+  <keybind key="W-S-space">
     <action name="Execute">
         <command>dmenu_run</command>
     </action>
