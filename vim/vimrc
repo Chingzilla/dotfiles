@@ -1,5 +1,9 @@
 syntax on
+
+"Color Settings ---
 set background=dark
+colorscheme solarized
+
 set backspace=2
 set nowrap
 set ai
@@ -15,8 +19,6 @@ set shiftround
 set showmatch
 set smarttab
 set softtabstop=4
-
-colorscheme molokai 
 
 "autocmd Syntax python set tabstop=4 expandtab shiftwidth=4 shiftround showmatch smarttab softtabstop=4
 "autocmd Syntax py set tabstop=4 expandtab shiftwidth=4 shiftround showmatch smarttab softtabstop=4
