@@ -1,2 +1,5 @@
+#load x settings
+xrdb ~/.Xresources
+
 #Start Panel
 xfce4-panel
