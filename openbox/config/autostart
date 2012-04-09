@@ -3,3 +3,6 @@ xrdb ~/.Xresources
 
 #Start Panel
 xfce4-panel
+
+#Get Wallpaper
+nitrogen --restore &
