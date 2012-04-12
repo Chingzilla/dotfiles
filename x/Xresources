@@ -1,5 +1,6 @@
 ! ----------------------
 ! ~/.Xresources
+! reload with: `xrdb ~/.Xresources`
 ! ----------------------
 
 
@@ -82,10 +83,15 @@
 ! uRxvt Settings
 uRxvt.buffered:         true
 
-URxvt.font:             xft:Terminus:pixelsize=10:antialias=false
-URxvt.boldFont:         xft:Terminus:bold:pixelsize=10:antialias=false
+URxvt.font:             xft:Terminus:pixelsize=14:antialias=false
+URxvt.boldFont:         xft:Terminus:bold:pixelsize=14:antialias=false
 URxvt.depth: 32
 
 URxvt.scrollBar: false
 
 Urxvt.secondaryScroll:  true    # Enable Shift-PageUp/Down in screen
+
+! color man pages
+URxvt.colorIT:          S_red
+URxvt.colorBD:          S_blue
+URxvt.colorUL:          S_base1
