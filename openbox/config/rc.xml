@@ -332,7 +332,7 @@
     </action>
   </keybind>
   
-  <keybind key="W-S-space">
+  <keybind key="W-space">
     <action name="Execute">
         <command>dmenu_run -nb '#002b36' -nf '#657b83' -sb '#002b36' -sf '#268bd2' -i</command>
     </action>
