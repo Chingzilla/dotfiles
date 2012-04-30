@@ -1,0 +1,7 @@
+#todo.txt alias
+alias t="todo.sh"
+alias ta="todo.sh add"
+alias tls="todo.sh ls"
+alias tl="todo.sh ls"
+alias td="todo.sh do"
+alias tr="todo.sh do"

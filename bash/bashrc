@@ -1,3 +1,9 @@
+#Load bash_profile
+source ~/.bash_profile
+
+#Set terminal to vi mode
+set -o vi
+
 # Setup PS1
 #Setup Colors
 txtmain='\e[1;34m' # Blue, Bold
@@ -26,6 +32,10 @@ fi
 
     complete -cf sudo
     export PATH=$PATH:/sbin:/usr/sbin
+
+#Bash history completion
+bind '"\e[A": history-search-backward'
+bind '"\e[B": history-search-forward'
 
 # Set Aliases
 ## Common Aliases
