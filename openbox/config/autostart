@@ -8,3 +8,6 @@ tint2 &
 #Get Wallpaper
 sleep 3
 nitrogen --restore &
+
+#Run wicd gui
+wicd-gtk &
