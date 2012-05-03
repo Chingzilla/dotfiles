@@ -23,6 +23,16 @@ set softtabstop=4
 "autocmd Syntax python set tabstop=4 expandtab shiftwidth=4 shiftround showmatch smarttab softtabstop=4
 "autocmd Syntax py set tabstop=4 expandtab shiftwidth=4 shiftround showmatch smarttab softtabstop=4
 
+"folding us: za to toggle
+set foldmethod=indent
+set foldlevel=99
+
+"Move around open windows with jklh
+map <c-j> <c-w>j
+map <c-k> <c-w>k
+map <c-l> <c-w>l
+map <c-h> <c-w>h
+
 
 "Setup eclim"
 set nocompatible
