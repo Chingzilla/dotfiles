@@ -5,3 +5,9 @@ alias tls="todo.sh ls"
 alias tl="todo.sh ls"
 alias td="todo.sh do"
 alias tr="todo.sh do"
+
+#git alias
+alias ga="git add"
+alias gs="git status"
+alias gl="git log"
+alias gd="git diff"
