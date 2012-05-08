@@ -24,6 +24,9 @@ set showmatch
 set smarttab
 set softtabstop=4
 
+"Turn on spell check by default
+set spell
+
 "autocmd Syntax python set tabstop=4 expandtab shiftwidth=4 shiftround showmatch smarttab softtabstop=4
 "autocmd Syntax py set tabstop=4 expandtab shiftwidth=4 shiftround showmatch smarttab softtabstop=4
 
