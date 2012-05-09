@@ -249,7 +249,10 @@ globalkeys = awful.util.table.join(
                   mypromptbox[mouse.screen].widget,
                   awful.util.eval, nil,
                   awful.util.getdir("cache") .. "/history_eval")
-              end)
+              end),
+
+    -- Multimedia control
+    awful.key({ modkey }, "p", function () awful.util.spawn("media-ctl play") end)
 )
 
 clientkeys = awful.util.table.join(
