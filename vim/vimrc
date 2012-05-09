@@ -8,6 +8,9 @@ syntax on
 set background=dark
 colorscheme solarized
 
+"Set xterm title to file name
+set title
+
 set backspace=2
 set nowrap
 set ai
