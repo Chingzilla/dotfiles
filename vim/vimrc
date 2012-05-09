@@ -43,6 +43,9 @@ map <c-k> <c-w>k
 map <c-l> <c-w>l
 map <c-h> <c-w>h
 
+"Run :w!! to write file as root
+cmap w!! w !sudo tee % >/dev/null<CR>:e!<CR><CR>
+
 "Keymap for opening gundo tree
 map <leader>g :GundoToggle<cr>
 
