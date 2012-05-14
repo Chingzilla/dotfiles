@@ -48,11 +48,15 @@ alias grep='grep --colour=auto'
 
 alias wget='wget -c'
 
-## Local Aliases
+## Aliases
 if [ -f ~/.bash_aliases ]; then
     source ~/.bash_aliases
 fi
 
+## Local Aliases
+if [ -f ~/.bash_local_aliases ]; then
+    source ~/.bash_local_aliases
+fi
 # Set Custom vaules
 
 export PYTHONDOCS=/usr/share/doc/python/html/
