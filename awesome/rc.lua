@@ -343,6 +343,8 @@ awful.rules.rules = {
       properties = { floating = true } },
     { rule = { class = "Vlc" },
       properties = { floating = true } },
+    { rule = { class = "feh" },
+      properties = { floating = true } },
     { rule = { class = "pinentry" },
       properties = { floating = true } },
     { rule = { class = "gimp" },
