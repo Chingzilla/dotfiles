@@ -1,0 +1,13 @@
+#load x settings
+xrdb ~/.Xresources
+
+#Start Panel
+#xfce4-panel
+tint2 &
+
+#Get Wallpaper
+sleep 3
+nitrogen --restore &
+
+#Run wicd gui
+wicd-gtk &

@@ -1,3 +1,9 @@
+#Load bash_profile
+source ~/.bash_profile
+
+#Set terminal to vi mode
+set -o vi
+
 # Setup PS1
 #Setup Colors
 txtmain='\e[1;34m' # Blue, Bold
@@ -27,6 +33,10 @@ fi
     complete -cf sudo
     export PATH=$PATH:/sbin:/usr/sbin
 
+#Bash history completion
+bind '"\e[A": history-search-backward'
+bind '"\e[B": history-search-forward'
+
 # Set Aliases
 ## Common Aliases
 alias rm='rm -I'
@@ -38,11 +48,15 @@ alias grep='grep --colour=auto'
 
 alias wget='wget -c'
 
-## Local Aliases
+## Aliases
 if [ -f ~/.bash_aliases ]; then
     source ~/.bash_aliases
 fi
 
+## Local Aliases
+if [ -f ~/.bash_local_aliases ]; then
+    source ~/.bash_local_aliases
+fi
 # Set Custom vaules
 
 export PYTHONDOCS=/usr/share/doc/python/html/
