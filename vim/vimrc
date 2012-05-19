@@ -61,5 +61,8 @@ nn <f7> :setlocal spell! spelllang=en_us<CR>
 nnoremap <f1> :bp<CR>
 nnoremap <f2> :bn<CR>
 
+"Allow arrow keys to wrap around line breaks when navigating
+set whichwrap+=<,>,[,]
+
 "<F5> to toggle paste mode (great for python copy-paste)
 nnoremap <f5> :set paste!<CR>
