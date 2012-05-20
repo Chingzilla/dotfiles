@@ -37,17 +37,6 @@ fi
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
 
-# Set Aliases
-## Common Aliases
-alias rm='rm -I'
-alias mv='mv -i'
-alias cp='cp -i'
-
-alias ls='ls --color=auto'
-alias grep='grep --colour=auto'
-
-alias wget='wget -c'
-
 ## Aliases
 if [ -f ~/.bash_aliases ]; then
     source ~/.bash_aliases
@@ -57,10 +46,7 @@ fi
 if [ -f ~/.bash_local_aliases ]; then
     source ~/.bash_local_aliases
 fi
+
 # Set Custom vaules
-
 export PYTHONDOCS=/usr/share/doc/python/html/
-export EDITOR=vim
 export HISTCONTROL=ignoredups
-
-# Clean up temp Vars

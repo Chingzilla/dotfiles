@@ -1,3 +1,13 @@
+#Color alias
+alias rm='rm -I'
+alias mv='mv -i'
+alias cp='cp -i'
+
+alias ls='ls --color=auto'
+alias grep='grep --colour=auto'
+
+alias wget='wget -c'
+
 #todo.txt alias
 alias t="todo.sh"
 alias ta="todo.sh add"
