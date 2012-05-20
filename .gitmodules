@@ -7,3 +7,6 @@
 [submodule "vim/vim/bundle/minibufexpl"]
 	path = vim/vim/bundle/minibufexpl
 	url = https://github.com/fholgado/minibufexpl.vim.git
+[submodule "zsh/oh-my-zsh"]
+	path = zsh/oh-my-zsh
+	url = https://github.com/robbyrussell/oh-my-zsh.git
