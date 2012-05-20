@@ -1,0 +1,9 @@
+#!/bin/bash
+
+
+case $1 in
+    play)
+        #toggle play on pianobar
+        echo p > ~/.config/pianobar/ctl
+        ;;
+esac
