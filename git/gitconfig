@@ -15,3 +15,10 @@
 
 [merge]
     tool = vimdiff
+
+[diff]
+    tool = vimdiff
+
+[alias]
+    master = checkout master
+    dev = checkout dev
