@@ -1,0 +1,27 @@
+Configuration Files
+===================
+
+This is a collection of my configuration files (dotfiles). They are a mixture
+of $HOME and /etc files that are tweaked to my likeing. Feel free to anything
+you find usefull.
+
+== dotman.sh ==
+A simple script used for creating symlinks from git repo to relevant location
+
+.Usage
+[source,bash]
+-------------
+$ ./dotman.sh vim link
+-------------
+
+or to just copy the files
+[source,bash]
+------------
+$ ./dotman.sh vim backup
+------------
+
+== Adding configuration files ==
+To add files that will deployed by dotman.sh, create a dir $PROGRAM. Then create
+the file "$PROGRAM/files". each line represents one file/directory to sysmlink.
+Format is $REPOFILE>$CONFIGFILE. Where $REPOFILE is the file relative to $PROGRAM,
+and $CONFIGFILE is the file location relative to $HOME. See vim/files for examples.
