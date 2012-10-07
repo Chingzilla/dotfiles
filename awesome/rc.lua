@@ -7,6 +7,8 @@ require("beautiful")
 -- Notification library
 require("naughty")
 
+require("awful.remote")
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -32,6 +34,23 @@ do
 end
 -- }}}
 
+-- Helper Function for use with awesome-client
+function echo(output)
+
+    -- Turn tables to a string
+    if type(output) == "table" then
+        str = "[\n"
+        for i,v in pairs(output) do
+            str = string.format("%s | %s\n", str, tostring(i), tostring(v))
+        end
+        str = str .. "]"
+    else
+        str = tostring(output)
+    end
+
+    naughty.notify({title = "debug info:", text = str, timeout=10})
+end
+
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
 beautiful.init("/usr/share/awesome/themes/default/theme.lua")
@@ -49,21 +68,58 @@ editor_cmd = terminal .. " -e " .. editor
 modkey = "Mod4"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
-layouts =
+layouts_horz =
 {
     awful.layout.suit.tile,
     awful.layout.suit.floating,
     awful.layout.suit.max,
     awful.layout.suit.max.fullscreen,
 }
+
+layouts_vert =
+{
+    awful.layout.suit.tile.bottom,
+    awful.layout.suit.fair.horizontal,
+    awful.layout.suit.floating,
+    awful.layout.suit.max,
+    awful.layout.suit.max.fullscreen,
+}
+
+function next_layout(direction)
+    local layout = screen_layouts[mouse.screen] 
+    awful.layout.inc(layout, direction)
+end
+
+-- Main screen has named tags, other screen has equal number tags, just not named
+main_screen_tags = {"www", "dev1", "dev2", "test", 5, 6, 7, 8, 9}
+other_screen_tags = {}
+for i=1, # main_screen_tags do other_screen_tags[i] = i end
+
 -- }}}
 
 -- {{{ Tags
 -- Define a tag table which hold all screen tags.
 tags = {}
+screen_layouts = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    tags[s] = awful.tag({ "www", "dev", "test", 4, 5, 6, 7, 8, 9 }, s, layouts[1])
+    -- Choose layout base on screen ratio 
+    local layout
+    if screen[s].geometry.height < screen[s].geometry.width then
+        layout = layouts_horz
+    else
+        layout = layouts_vert
+    end
+
+    local tag
+    if s == 1 then
+        tag = main_screen_tags
+    else
+        tag = other_screen_tags
+    end
+
+    tags[s] = awful.tag( tag, s, layout[1])
+    screen_layouts[s] = layout
 end
 -- }}}
 
@@ -152,10 +208,10 @@ for s = 1, screen.count() do
     -- We need one layoutbox per screen.
     mylayoutbox[s] = awful.widget.layoutbox(s)
     mylayoutbox[s]:buttons(awful.util.table.join(
-                           awful.button({ }, 1, function () awful.layout.inc(layouts, 1) end),
-                           awful.button({ }, 3, function () awful.layout.inc(layouts, -1) end),
-                           awful.button({ }, 4, function () awful.layout.inc(layouts, 1) end),
-                           awful.button({ }, 5, function () awful.layout.inc(layouts, -1) end)))
+                           awful.button({ }, 1, function () next_layout(1) end),
+                           awful.button({ }, 3, function () next_layout(-1) end),
+                           awful.button({ }, 4, function () next_layout(1) end),
+                           awful.button({ }, 5, function () next_layout(-1) end)))
     -- Create a taglist widget
     mytaglist[s] = awful.widget.taglist(s, awful.widget.taglist.label.all, mytaglist.buttons)
 
@@ -234,8 +290,8 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Shift"   }, "l",     function () awful.tag.incnmaster(-1)      end),
     awful.key({ modkey, "Control" }, "h",     function () awful.tag.incncol( 1)         end),
     awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1)         end),
-    awful.key({ modkey,           }, "space", function () awful.layout.inc(layouts,  1) end),
-    awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(layouts, -1) end),
+    awful.key({ modkey,           }, "space", function () next_layout(1) end),
+    awful.key({ modkey, "Shift"   }, "space", function () next_layout(-1) end),
 
     awful.key({ modkey, "Control" }, "n", awful.client.restore),
 
@@ -252,7 +308,11 @@ globalkeys = awful.util.table.join(
               end),
 
     -- Multimedia control
-    awful.key({ modkey }, "p", function () awful.util.spawn("media-ctl play") end)
+    awful.key({ modkey }, "p", function () awful.util.spawn("media-ctl play") end),
+    -- Volume
+    awful.key({}, "XF86AudioRaiseVolume", function () awful.util.spawn("amixer -D pulse set Master 5%+ unmute") end),
+    awful.key({}, "XF86AudioLowerVolume", function () awful.util.spawn("amixer -D pulse set Master 5%- unmute") end),
+    awful.key({}, "XF86AudioMute", function () awful.util.spawn("amixer -D pulse set Master toggle") end)
 )
 
 clientkeys = awful.util.table.join(
@@ -355,8 +415,10 @@ awful.rules.rules = {
       properties = { floating = true } },
     { rule = { class = "Wicd-client.py" },
       properties = { floating = true } },
-    { rule = { class = "Opera" },
-      properties = { tag = tags[1][1] } },
+    { rule = { instance = "plugin-container" },
+      properties = { floating = true } },
+    { rule = { instance = "operapluginwrapper-native" },
+      properties = { floating = true, fullscreen = true } },
     -- Set Firefox to always map on tags number 2 of screen 1.
     -- { rule = { class = "Firefox" },
     --   properties = { tag = tags[1][2] } },
