@@ -50,3 +50,8 @@ fi
 # Set Custom vaules
 export PYTHONDOCS=/usr/share/doc/python/html/
 export HISTCONTROL=ignoredups
+
+unset txtmain
+unset txtsec
+unset txtred
+unset txtreset
