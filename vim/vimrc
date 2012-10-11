@@ -66,3 +66,7 @@ set whichwrap+=<,>,[,]
 
 "<F5> to toggle paste mode (great for python copy-paste)
 nnoremap <f5> :set paste!<CR>
+
+"Folding with space bar
+nnoremap <space> za
+vnoremap <space> zf
