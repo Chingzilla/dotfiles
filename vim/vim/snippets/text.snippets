@@ -2,30 +2,23 @@ snippet __
 	__${1:italic_word}__ ${2}
 snippet title main
 	${1:title}
-	==========
-	:keywords: ${2}
-	:description: ${3}
+	=========================
 	${4}
 
 snippet sub1
-	${1:title}
-	----------
-	{${2:description}}
+	== ${1:title} ==
 	${3}
 
 snippet sub2
-	${1:title}
-	~~~~~~~~~~
+	=== ${1:title} ===
 	${2}
 
 snippet sub3
-	${1:title}
-	^^^^^^^^^^
+	==== ${1:title} ====
 	${2}
 
 snippet sub4
-	${1:title}
-	++++++++++
+	==== ${1:title} ====
 	${2}
 
 snippet link
@@ -39,6 +32,14 @@ snippet box
 	********************************************************************************
 	{${2:text}
 	********************************************************************************
+
+snippet table
+	.${1:header}
+	[options="header"]
+	|=========================
+	|${2}|${3}
+	|${4}|${5}
+	|=========================
 
 snippet cmd user
 	[source,bash]
