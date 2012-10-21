@@ -2,23 +2,31 @@ filetype off
 call pathogen#infect()
 "call pathogen#runtime_append_all_bundles()
 "call pathogen#helptags()
-syntax on
 
-"Color Settings ---
-set background=dark
-colorscheme solarized
+" Vim visual candy
+    syntax on
 
-"Set xterm title to file name
-set title
+    "Color Settings ---
+    set background=dark
+    colorscheme solarized
+
+    "Set xterm title to file name
+    set title
+    
+    set showmode
+
+    "Disable hello msg with empty vim session
+    set shortmess+=I
+    set ruler
 
 set backspace=2
 set nowrap
 set ai
 set nocp
-set ruler
 
 set mouse=a
 
+"Spaceing
 set tabstop=4
 set expandtab
 set shiftwidth=4
@@ -27,24 +35,36 @@ set showmatch
 set smarttab
 set softtabstop=4
 
-"Turn on spell check by default
-set spell
-
-"Turn on highlighting for all search maches
-set hlsearch
-
-"autocmd Syntax python set tabstop=4 expandtab shiftwidth=4 shiftround showmatch smarttab softtabstop=4
-"autocmd Syntax py set tabstop=4 expandtab shiftwidth=4 shiftround showmatch smarttab softtabstop=4
-
 "folding us: za to toggle
 set foldmethod=indent
 set foldlevel=99
 
-"Move around open windows with jklh
-map <c-j> <c-w>j
-map <c-k> <c-w>k
-map <c-l> <c-w>l
-map <c-h> <c-w>h
+"Windows and Buffer Navigation
+    "<f1> and <f2> for traversing buffers
+    nnoremap <f1> :bp<CR>
+    nnoremap <f2> :bn<CR>
+
+    "Move around open windows with jklh
+    map <c-j> <c-w>j
+    map <c-k> <c-w>k
+    map <c-l> <c-w>l
+    map <c-h> <c-w>h
+
+"Searching ---
+    "Center next search
+    nnoremap n nzz
+    nnoremap N Nzz
+
+    "Use Perl regex for searching
+    nnoremap / /\v
+    vnoremap / /\v
+    nnoremap ? ?\v
+    vnoremap ? ?\v
+
+    "Turn on highlighting for all search maches
+    set hlsearch
+    set incsearch
+
 
 "Run :w!! to write file as root
 cmap w!! w !sudo tee % >/dev/null<CR>:e!<CR><CR>
@@ -52,20 +72,31 @@ cmap w!! w !sudo tee % >/dev/null<CR>:e!<CR><CR>
 "Keymap for opening gundo tree
 map <leader>g :GundoToggle<cr>
 
+"list chars
+nmap <leader>1 :set list!<CR>
+set listchars=tab:~\ ,eol:¬
 
 "Setup eclim"
-set nocompatible
+"set nocompatible
+
 filetype plugin on
 
-"<f7> for spell check
-nn <f7> :setlocal spell! spelllang=en_us<CR>
+"Spelling
+    "<f7> for spell check
+    nn <f7> :setlocal spell! spelllang=en_us<CR>
 
-"<f1> and <f2> for traversing buffers
-nnoremap <f1> :bp<CR>
-nnoremap <f2> :bn<CR>
+    "Turn on spell check by default
+    set spell
 
-"Allow arrow keys to wrap around line breaks when navigating
-set whichwrap+=<,>,[,]
 
-"<F5> to toggle paste mode (great for python copy-paste)
-nnoremap <f5> :set paste!<CR>
+"Misc key bindings
+    "<Esc> alterative
+    inoremap jj <Esc>
+
+    "<F5> to toggle paste mode (great for python copy-paste)
+    nnoremap <f5> :set paste!<CR>
+
+    "Disable unused bindings that get hit accidentally 
+    nnoremap <F1> <nop>
+    nnoremap Q <nop>
+    nnoremap K <nop>
